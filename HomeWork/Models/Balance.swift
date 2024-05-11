@@ -24,5 +24,3 @@ struct FixedDepositList: Decodable {
 struct DigitalList: Decodable {
     let digitalList: [Balance]
 }
-
-

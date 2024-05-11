@@ -19,10 +19,13 @@ struct HomeWorkApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
         // hide vertical indicator
         UITableView.appearance().showsVerticalScrollIndicator = false
         
+        // change navigationBar color
+        UINavigationBar.appearance().backgroundColor = UIColor(.white1)
+        UINavigationBar.appearance().barTintColor = UIColor(.white1)
+
         return true
     }
 }

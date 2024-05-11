@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C4AD9852BF0430E00EC99E6 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4AD9842BF0430E00EC99E6 /* Feature.swift */; };
 		3C4D767F2BEE24B600881C51 /* HomeWorkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4D767E2BEE24B600881C51 /* HomeWorkApp.swift */; };
 		3C4D76832BEE24B700881C51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D76822BEE24B700881C51 /* Assets.xcassets */; };
 		3C4D76862BEE24B800881C51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C4D76852BEE24B800881C51 /* Preview Assets.xcassets */; };
@@ -59,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C4AD9842BF0430E00EC99E6 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		3C4AD9862BF0484200EC99E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3C4D767B2BEE24B600881C51 /* HomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C4D767E2BEE24B600881C51 /* HomeWorkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkApp.swift; sourceTree = "<group>"; };
 		3C4D76822BEE24B700881C51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		3C4D767D2BEE24B600881C51 /* HomeWork */ = {
 			isa = PBXGroup;
 			children = (
+				3C4AD9862BF0484200EC99E6 /* Info.plist */,
 				3C4D767E2BEE24B600881C51 /* HomeWorkApp.swift */,
 				3C4D76A82BEE251C00881C51 /* Screens */,
 				3C4D76C02BEE252400881C51 /* Models */,
@@ -235,6 +239,7 @@
 				3C4D76C22BEE252400881C51 /* Response.swift */,
 				3C4D76C32BEE252400881C51 /* Notification.swift */,
 				3C4D76C12BEE252400881C51 /* Balance.swift */,
+				3C4AD9842BF0430E00EC99E6 /* Feature.swift */,
 				3C4D76C42BEE252400881C51 /* Favorite.swift */,
 				3C4D76C52BEE252400881C51 /* Banner.swift */,
 			);
@@ -437,6 +442,7 @@
 				3C4D76B62BEE251C00881C51 /* HomeViewModel.swift in Sources */,
 				3C4D76B92BEE251C00881C51 /* FavoriteView.swift in Sources */,
 				3C4D76E02BEEF58900881C51 /* TabBarView.swift in Sources */,
+				3C4AD9852BF0430E00EC99E6 /* Feature.swift in Sources */,
 				3C4D76C82BEE252400881C51 /* Notification.swift in Sources */,
 				3C4D76BB2BEE251C00881C51 /* TopBarView.swift in Sources */,
 				3C4D76CA2BEE252400881C51 /* Banner.swift in Sources */,
@@ -609,6 +615,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HomeWork/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeWork/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -638,6 +645,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HomeWork/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HomeWork/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -30,23 +30,3 @@ extension View {
             .buttonStyle(.plain)
     }
 }
-
-struct LoadingViewModifier: ViewModifier {
-    var isLoading: Bool
-    
-    init(_ isLoading: Bool) {
-        self.isLoading = isLoading
-    }
-    
-    func body(content: Content) -> some View {
-        if isLoading {
-            ZStack {
-                content
-                ProgressView()
-                    .tint(.red) // TODO: change later
-            }
-        } else {
-            content
-        }
-    }
-}
