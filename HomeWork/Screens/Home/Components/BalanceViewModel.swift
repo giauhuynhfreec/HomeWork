@@ -25,7 +25,12 @@ class BalanceViewModel: ObservableObject {
     
     // MARK: Load FirstOpen/PullRefersh
     func loadFirstOpen() {
+        isShowAccountBalance = false
+        // usd
+        usdBalance = 0
         getUSDBalanceFirstOpen()
+        // khr
+        khrBalance = 0
         getKHRBalanceFirstOpen()
     }
     
@@ -44,56 +49,50 @@ class BalanceViewModel: ObservableObject {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdSavings1.json",
-                responseType: Response<SavingsList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    savingsList = data.result.savingsList
-                case .failure(let error):
-                    print(error)
-                    savingsList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdSavings1.json",
+            responseType: Response<SavingsList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                savingsList = data.result.savingsList
+            case .failure(let error):
+                print(error)
+                savingsList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdFixed1.json",
-                responseType: Response<FixedDepositList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    fixedDepositList = data.result.fixedDepositList
-                case .failure(let error):
-                    print(error)
-                    fixedDepositList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdFixed1.json",
+            responseType: Response<FixedDepositList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                fixedDepositList = data.result.fixedDepositList
+            case .failure(let error):
+                print(error)
+                fixedDepositList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdDigital1.json",
-                responseType: Response<DigitalList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    digitalList = data.result.digitalList
-                case .failure(let error):
-                    print(error)
-                    digitalList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdDigital1.json",
+            responseType: Response<DigitalList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                digitalList = data.result.digitalList
+            case .failure(let error):
+                print(error)
+                digitalList = []
             }
         }
         
@@ -118,56 +117,50 @@ class BalanceViewModel: ObservableObject {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdSavings2.json",
-                responseType: Response<SavingsList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    savingsList = data.result.savingsList
-                case .failure(let error):
-                    print(error)
-                    savingsList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdSavings2.json",
+            responseType: Response<SavingsList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                savingsList = data.result.savingsList
+            case .failure(let error):
+                print(error)
+                savingsList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdFixed2.json",
-                responseType: Response<FixedDepositList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    fixedDepositList = data.result.fixedDepositList
-                case .failure(let error):
-                    print(error)
-                    fixedDepositList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdFixed2.json",
+            responseType: Response<FixedDepositList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                fixedDepositList = data.result.fixedDepositList
+            case .failure(let error):
+                print(error)
+                fixedDepositList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/usdDigital2.json",
-                responseType: Response<DigitalList>.self
-            ) { result in
-                self.usdProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    digitalList = data.result.digitalList
-                case .failure(let error):
-                    print(error)
-                    digitalList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/usdDigital2.json",
+            responseType: Response<DigitalList>.self
+        ) { result in
+            self.usdProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                digitalList = data.result.digitalList
+            case .failure(let error):
+                print(error)
+                digitalList = []
             }
         }
         
@@ -193,56 +186,50 @@ class BalanceViewModel: ObservableObject {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/khrSavings1.json",
-                responseType: Response<SavingsList>.self
-            ) { result in
-                self.khrProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    savingsList = data.result.savingsList
-                case .failure(let error):
-                    print(error)
-                    savingsList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/khrSavings1.json",
+            responseType: Response<SavingsList>.self
+        ) { result in
+            self.khrProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                savingsList = data.result.savingsList
+            case .failure(let error):
+                print(error)
+                savingsList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/khrFixed1.json",
-                responseType: Response<FixedDepositList>.self
-            ) { result in
-                self.khrProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    fixedDepositList = data.result.fixedDepositList
-                case .failure(let error):
-                    print(error)
-                    fixedDepositList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/khrFixed1.json",
+            responseType: Response<FixedDepositList>.self
+        ) { result in
+            self.khrProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                fixedDepositList = data.result.fixedDepositList
+            case .failure(let error):
+                print(error)
+                fixedDepositList = []
             }
         }
         
         dispatchGroup.enter()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/khrDigital1.json",
-                responseType: Response<DigitalList>.self
-            ) { result in
-                self.khrProgress += 1/3
-                dispatchGroup.leave()
-                switch result {
-                case .success(let data):
-                    digitalList = data.result.digitalList
-                case .failure(let error):
-                    print(error)
-                    digitalList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/khrDigital1.json",
+            responseType: Response<DigitalList>.self
+        ) { result in
+            self.khrProgress += 1/3
+            dispatchGroup.leave()
+            switch result {
+            case .success(let data):
+                digitalList = data.result.digitalList
+            case .failure(let error):
+                print(error)
+                digitalList = []
             }
         }
         
@@ -267,7 +254,7 @@ class BalanceViewModel: ObservableObject {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        self.httpService.getRequest( // TODO: remove self
+        httpService.getRequest(
             urlString: "https://willywu0201.github.io/data/khrSavings2.json",
             responseType: Response<SavingsList>.self
         ) { result in
@@ -283,7 +270,7 @@ class BalanceViewModel: ObservableObject {
         }
         
         dispatchGroup.enter()
-        self.httpService.getRequest( // TODO: remove self
+        httpService.getRequest(
             urlString: "https://willywu0201.github.io/data/khrFixed2.json",
             responseType: Response<FixedDepositList>.self
         ) { result in
@@ -299,7 +286,7 @@ class BalanceViewModel: ObservableObject {
         }
         
         dispatchGroup.enter()
-        self.httpService.getRequest( // TODO: remove self
+        httpService.getRequest(
             urlString: "https://willywu0201.github.io/data/khrDigital2.json",
             responseType: Response<DigitalList>.self
         ) { result in

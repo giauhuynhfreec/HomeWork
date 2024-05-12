@@ -28,7 +28,7 @@ class HomeViewModel: ObservableObject {
         // notification
         notificationList = []
         getNotificationListFirstOpen()
-                        
+        
         // favorite
         favoriteList = []
         getFavoriteListFirstOpen()
@@ -77,59 +77,53 @@ class HomeViewModel: ObservableObject {
     // MARK: Favorite
     func getFavoriteListFirstOpen() {
         isLoadingFavorite = true
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: remove later
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/emptyFavoriteList.json",
-                responseType: Response<FavoriteList>.self
-            ) { result in
-                self.isLoadingFavorite = false
-                switch result {
-                case .success(let data):
-                    self.favoriteList =  data.result.favoriteList
-                case .failure(let error):
-                    print(error)
-                    self.favoriteList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/emptyFavoriteList.json",
+            responseType: Response<FavoriteList>.self
+        ) { result in
+            self.isLoadingFavorite = false
+            switch result {
+            case .success(let data):
+                self.favoriteList =  data.result.favoriteList
+            case .failure(let error):
+                print(error)
+                self.favoriteList = []
             }
-//        }
+        }
     }
     
     func getFavoriteListPullRefresh() {
         isLoadingFavorite = true
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: remove later
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/favoriteList.json",
-                responseType: Response<FavoriteList>.self
-            ) { result in
-                self.isLoadingFavorite = false
-                switch result {
-                case .success(let data):
-                    self.favoriteList =  data.result.favoriteList
-                case .failure(let error):
-                    print(error)
-                    self.favoriteList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/favoriteList.json",
+            responseType: Response<FavoriteList>.self
+        ) { result in
+            self.isLoadingFavorite = false
+            switch result {
+            case .success(let data):
+                self.favoriteList =  data.result.favoriteList
+            case .failure(let error):
+                print(error)
+                self.favoriteList = []
             }
-//        }
+        }
     }
     
     // MARK: Banner
     func getBannerList() {
         isLoadingBanner = true
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // TODO: test
-            self.httpService.getRequest( // TODO: remove self
-                urlString: "https://willywu0201.github.io/data/banner.json",
-                responseType: Response<BannerList>.self
-            ) { result in
-                self.isLoadingBanner = false
-                switch result {
-                case .success(let data):
-                    self.bannerList = data.result.bannerList
-                case .failure(let error):
-                    print(error)
-                    self.bannerList = []
-                }
+        httpService.getRequest(
+            urlString: "https://willywu0201.github.io/data/banner.json",
+            responseType: Response<BannerList>.self
+        ) { result in
+            self.isLoadingBanner = false
+            switch result {
+            case .success(let data):
+                self.bannerList = data.result.bannerList
+            case .failure(let error):
+                print(error)
+                self.bannerList = []
             }
-//        }
+        }
     }
 }

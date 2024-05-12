@@ -28,5 +28,3 @@ struct HomeNavigationView: View {
         })
     }
 }
-
-

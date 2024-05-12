@@ -21,19 +21,19 @@ struct HomeView: View {
                 )
                     .padding(.bottom, 16)
                 BalanceView(viewModel: balanceViewModel)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 24)
                 FeatureView()
                     .padding(.bottom, 30)
                 FavoriteView(
                     favoriteList: viewModel.favoriteList,
                     isLoading: viewModel.isLoadingFavorite
                 )
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 24)
                 BannerView(
                     bannerList: viewModel.bannerList,
                     isLoading: viewModel.isLoadingBanner
                 )
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 60)
             }
             .listRowSeparator(.hidden)
             .listRowInsets(EdgeInsets())
