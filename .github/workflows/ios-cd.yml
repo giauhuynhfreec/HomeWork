@@ -22,7 +22,9 @@ jobs:
         ruby-version: '3.0'
 
     - name: Resolve Swift packages
-      run: xcodebuild -resolvePackageDependencies -workspace YourApp.xcworkspace -scheme YourApp
+      # run: xcodebuild -resolvePackageDependencies -workspace YourApp.xcworkspace -scheme YourApp
+      run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
+
 
     - name: Build app
       run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
