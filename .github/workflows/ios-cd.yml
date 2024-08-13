@@ -28,7 +28,10 @@ jobs:
 
     - name: Build app
       # run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
-      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
+      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
+      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive
+      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q
+
 
 
     - name: Export .ipa file
@@ -41,3 +44,27 @@ jobs:
         APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
       run: |
         xcrun altool --upload-app --type ios --file $PWD/build/YourApp.ipa --apiKey $APP_STORE_CONNECT_API_KEY_ID --apiIssuer $APP_STORE_CONNECT_API_KEY_ISSUER_ID --apiKeyPath $APP_STORE_CONNECT_API_KEY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
