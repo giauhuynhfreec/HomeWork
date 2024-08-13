@@ -30,7 +30,8 @@ jobs:
       # run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
       # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
       # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive
-      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q
+      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q
+        run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q -allowProvisioningUpdates
 
 
 
