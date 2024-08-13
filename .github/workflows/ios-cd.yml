@@ -27,7 +27,9 @@ jobs:
 
 
     - name: Build app
-      run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
+      # run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
+      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
+
 
     - name: Export .ipa file
       run: xcodebuild -exportArchive -archivePath $PWD/build/YourApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath $PWD/build
