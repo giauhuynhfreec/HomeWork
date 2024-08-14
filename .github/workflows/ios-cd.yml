@@ -29,6 +29,7 @@ jobs:
         provisioning-profile-base64: ${{ secrets.PROVISIONING_PROFILE_BASE64 }}
 
 
+
     - name: Resolve Swift packages
       run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
 
