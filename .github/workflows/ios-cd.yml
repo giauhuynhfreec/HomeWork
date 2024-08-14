@@ -27,10 +27,10 @@ jobs:
     - name: Set up provisioning profile
       run: |
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        echo "${{ secrets.PROVISIONING_PROFILE_BASE64 }}" | base64 --decode --output ~/Library/MobileDevice/Provisioning\ Profiles/Karasta_Provisioning_Profile.mobileprovision
+        echo "${{ secrets.PROVISIONING_PROFILE_BASE64 }}" | base64 --decode --output ~/Library/MobileDevice/Provisioning\ Profiles/Karasta_Provisioning.mobileprovision
 
     - name: Build app
-      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q PROVISIONING_PROFILE_SPECIFIER="Karasta Provisioning" -allowProvisioningUpdates
+      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q PROVISIONING_PROFILE_SPECIFIER="Karasta_Provisioning" -allowProvisioningUpdates
 
     - name: Export .ipa file
       run: xcodebuild -exportArchive -archivePath $PWD/build/HomeWork.xcarchive -exportOptionsPlist exportOptions.plist -exportPath $PWD/build
