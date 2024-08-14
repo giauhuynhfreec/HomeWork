@@ -22,15 +22,10 @@ jobs:
         ruby-version: '3.0'
 
     - name: Resolve Swift packages
-      # run: xcodebuild -resolvePackageDependencies -workspace YourApp.xcworkspace -scheme YourApp
       run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
 
 
     - name: Build app
-      # run: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
-      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -configuration AppStoreDistribution archive -archivePath $PWD/build/YourApp.xcarchive
-      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive
-      # run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q
       run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q -allowProvisioningUpdates
 
 
