@@ -1,0 +1,22 @@
+name: Release to the app store
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Upload to AppStore
+        run: bundle exec fastlane build_and_upload_to_appstore
+        env:
+          APP_STORE_CONNECT_API_KEY_CONTENT: ${{Secrets.APP_STORE_CONNECT_API_KEY_CONTENT}}
+          APP_STORE_CONNECT_ISSUER_ID: ${{Secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID}}
+          APP_STORE_CONNECT_API_KEY_ID: ${{Secrets.APP_STORE_CONNECT_API_KEY_ID}}
