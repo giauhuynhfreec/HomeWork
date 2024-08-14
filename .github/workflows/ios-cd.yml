@@ -21,6 +21,14 @@ jobs:
       with:
         ruby-version: '3.0'
 
+    - name: Import code signing certificate
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
+        p12-password: ${{ secrets.P12_PASSWORD }}
+        provisioning-profile-base64: ${{ secrets.PROVISIONING_PROFILE_BASE64 }}
+
+
     - name: Resolve Swift packages
       run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
 
