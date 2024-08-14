@@ -1,0 +1,50 @@
+name: iOS Continuous Delivery
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+
+    - name: Resolve Swift packages
+      run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
+
+
+    - name: Install certificate
+      run: |
+        echo "${{ secrets.P12_FILE_BASE64 }}" | base64 --decode > distribution_certificate.p12
+        security import distribution_certificate.p12 -k ~/Library/Keychains/login.keychain -P "${{ secrets.P12_PASSWORD }}" -T /usr/bin/codesign
+
+    - name: Set up provisioning profile
+      run: |
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        echo "${{ secrets.PROVISIONING_PROFILE_BASE64 }}" | base64 --decode --output ~/Library/MobileDevice/Provisioning\ Profiles/Karasta_Provisioning.mobileprovision
+
+    - name: Build app
+      run: xcodebuild -project HomeWork.xcodeproj -scheme HomeWork -sdk iphoneos -destination 'generic/platform=iOS' -configuration AppStoreDistribution archive -archivePath $PWD/build/HomeWork.xcarchive DEVELOPMENT_TEAM=VVLVJ8XG6Q PROVISIONING_PROFILE_SPECIFIER="Karasta_Provisioning" -allowProvisioningUpdates
+
+    - name: Export .ipa file
+      run: xcodebuild -exportArchive -archivePath $PWD/build/HomeWork.xcarchive -exportOptionsPlist exportOptions.plist -exportPath $PWD/build
+
+    - name: Upload to TestFlight
+      env:
+        APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
+        APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+        APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+      run: |
+        xcrun altool --upload-app --type ios --file $PWD/build/HomeWork.ipa --apiKey $APP_STORE_CONNECT_API_KEY_ID --apiIssuer $APP_STORE_CONNECT_API_KEY_ISSUER_ID --apiKeyPath $APP_STORE_CONNECT_API_KEY
