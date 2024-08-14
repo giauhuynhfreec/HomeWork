@@ -24,6 +24,12 @@ jobs:
     - name: Resolve Swift packages
       run: xcodebuild -resolvePackageDependencies -project HomeWork.xcodeproj -scheme HomeWork
 
+
+    - name: Install certificate
+      run: |
+        echo "${{ secrets.P12_FILE_BASE64 }}" | base64 --decode > distribution_certificate.p12
+        security import distribution_certificate.p12 -k ~/Library/Keychains/login.keychain -P "${{ secrets.P12_PASSWORD }}" -T /usr/bin/codesign
+
     - name: Set up provisioning profile
       run: |
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
